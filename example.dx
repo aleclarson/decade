@@ -1,0 +1,68 @@
+# This is a comment.
+
+# This is an object type.
+type Point = {x: number, y: number}
+
+# This is a local object.
+let point = {x: 1, y: 2}
+
+# This is a structural type assertion.
+expect typeof point == Point
+
+# Inline types are allowed.
+expect typeof point == {x: number, y: number}
+
+# Exact types are essentially type brands.
+let point = Point {x: 1, y: 2}
+
+# This is a mass assignment.
+Object.assign point, {x: 0, y: 0}
+
+# This is a loose match. Shared properties are compared by identity.
+expect point == {x: 0, y: 0}
+
+# Use & to get an identity, which only == itself.
+let barId = &bar
+
+# This is a strict comparison.
+expect &foo == &bar
+
+# This is a type guard.
+if typeof point == Point {
+  # Anything goes here.
+}
+
+# This is a loose switch. Only one "if" statement will run (or none).
+try status {
+  if 'init' {
+    # Anything goes here.
+  }
+  if 'loading' {
+    # Anything goes here.
+  }
+  if 'loaded' {
+    # Anything goes here.
+  }
+  else {
+    # Fallback logic here. (optional)
+  }
+} catch {
+  # Error logic here. (optional)
+} finally {
+  # Cleanup logic here. (optional)
+}
+
+# This is a loose type switch.
+try typeof point {
+  if Point {
+    # Anything goes here.
+  }
+  if Vector {
+    # Only one of us will run.
+  }
+}
+
+# This is a JSX element.
+<View {...style}>
+  {children}
+</View>
